@@ -75,6 +75,55 @@
     .card a:hover {
       background-color: darkgreen;
     }
+    .rating {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .star {
+      font-size: 20px;
+      color: #ccc;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .star:hover,
+    .star.selected {
+      color: gold;
+    }
+    .submit-form {
+      background: #fff;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .submit-form h2 {
+      text-align: center;
+    }
+    .submit-form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .submit-form input,
+    .submit-form textarea,
+    .submit-form select,
+    .submit-form button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .submit-form button {
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .submit-form button:hover {
+      background-color: #357ab8;
+    }
   </style>
 </head>
 <body>
@@ -139,67 +188,74 @@
         <span class="tag">נוער</span>
         <span class="tag">צבאות השם</span>
       </div>
+      <div class="rating">
+        <span class="star" data-value="1">★</span>
+        <span class="star" data-value="2">★</span>
+        <span class="star" data-value="3">★</span>
+        <span class="star" data-value="4">★</span>
+        <span class="star" data-value="5">★</span>
+      </div>
       <a href="activity1.html">לפרטים</a>
-    </div>
-    <div class="card" data-age="ילדים" data-topic="ישראל" data-org="תלמוד תורה">
-      <h3>אהבת ישראל</h3>
-      <p>משחקים ודיונים בנושא ערבות הדדית ואחדות.</p>
-      <div class="tags">
-        <span class="tag">ישראל</span>
-        <span class="tag">ילדים</span>
-        <span class="tag">תלמוד תורה</span>
-      </div>
-      <a href="activity2.html">לפרטים</a>
-    </div>
-    <div class="card" data-age="כיתה ה, כיתה ו, כיתה ז, כיתה ח, כיתה ט, כיתה י, כיתה י\"א, כיתה י\"ב" data-topic="מסיבת פורים" data-org="בת מלך, צבאות השם, בנות חב\"ד, אחות התמימים, חב\"ד לנוער">
-      <h3>מסיבת פורים1</h3>
-      <p>פעילות מרתקת לכבוד חג הפורים לכל הגילאים והארגונים.</p>
-      <div class="tags">
-        <span class="tag">כיתה ה</span>
-        <span class="tag">כיתה ו</span>
-        <span class="tag">כיתה ז</span>
-        <span class="tag">כיתה ח</span>
-        <span class="tag">כיתה ט</span>
-        <span class="tag">כיתה י</span>
-        <span class="tag">כיתה י"א</span>
-        <span class="tag">כיתה י"ב</span>
-        <span class="tag">מסיבת פורים</span>
-        <span class="tag">בת מלך</span>
-        <span class="tag">צבאות השם</span>
-        <span class="tag">בנות חב"ד</span>
-        <span class="tag">אחות התמימים</span>
-        <span class="tag">חב"ד לנוער</span>
-      </div>
-      <a href="מסיבת_פורים1.html">לפעילות</a>
     </div>
   </div>
 
+  <div class="submit-form">
+    <h2>שליחת פעילות חדשה</h2>
+    <form id="activityForm">
+      <label for="activityTitle">כותרת הפעילות:</label>
+      <input type="text" id="activityTitle" name="activityTitle" placeholder="הזן את כותרת הפעילות" required />
+
+      <label for="activityDescription">תיאור הפעילות:</label>
+      <textarea id="activityDescription" name="activityDescription" placeholder="תאר את הפעילות..." rows="4" required></textarea>
+
+      <label for="activityAgeGroup">קבוצת גיל:</label>
+      <select id="activityAgeGroup" name="activityAgeGroup" required>
+        <option value="">בחר קבוצת גיל</option>
+        <option value="ילדים">ילדים</option>
+        <option value="נוער">נוער</option>
+        <option value="מבוגרים">מבוגרים</option>
+      </select>
+
+      <label for="activityTopic">נושא הפעילות:</label>
+      <input type="text" id="activityTopic" name="activityTopic" placeholder="הזן את נושא הפעילות" required />
+
+      <label for="activityOrg">ארגון:</label>
+      <input type="text" id="activityOrg" name="activityOrg" placeholder="הזן את שם הארגון" required />
+
+      <button type="submit">שלח פעילות</button>
+    </form>
+  </div>
+
   <script>
-    const filters = ['age', 'topic', 'org'];
-    filters.forEach(filter => {
-      document.getElementById(`${filter}Filter`).addEventListener('change', filterActivities);
-    });
-    document.getElementById('searchInput').addEventListener('input', filterActivities);
-
-    function filterActivities() {
-      const age = document.getElementById('ageFilter').value.trim().toLowerCase();
-      const topic = document.getElementById('topicFilter').value.trim().toLowerCase();
-      const org = document.getElementById('orgFilter').value.trim().toLowerCase();
-      const search = document.getElementById('searchInput').value.trim().toLowerCase();
-
-      document.querySelectorAll('.card').forEach(card => {
-        const matchAge = !age || card.dataset.age.toLowerCase().includes(age);
-        const matchTopic = !topic || card.dataset.topic.toLowerCase().includes(topic);
-        const matchOrg = !org || card.dataset.org.toLowerCase().includes(org);
-        const matchSearch = card.innerText.toLowerCase().includes(search);
-
-        if (matchAge && matchTopic && matchOrg && matchSearch) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
+    // דירוג כוכבים
+    document.querySelectorAll('.rating').forEach(rating => {
+      rating.querySelectorAll('.star').forEach(star => {
+        star.addEventListener('click', () => {
+          const value = star.getAttribute('data-value');
+          rating.querySelectorAll('.star').forEach(s => s.classList.remove('selected'));
+          for (let i = 0; i < value; i++) {
+            rating.children[i].classList.add('selected');
+          }
+          console.log(`דירוג שנבחר: ${value}`);
+        });
       });
-    }
+    });
+
+    // טיפול בטופס
+    const form = document.getElementById('activityForm');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const formData = {
+        title: form.activityTitle.value,
+        description: form.activityDescription.value,
+        ageGroup: form.activityAgeGroup.value,
+        topic: form.activityTopic.value,
+        organization: form.activityOrg.value,
+      };
+      console.log('פעילות נשלחה:', formData);
+      form.reset();
+      alert('הפעילות נשלחה בהצלחה!');
+    });
   </script>
 </body>
 </html>
