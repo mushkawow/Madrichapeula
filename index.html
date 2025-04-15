@@ -1,62 +1,159 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מדריכה בפעולה</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            direction: rtl;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #5b9bd5;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        main {
-            padding: 30px;
-        }
-        section {
-            margin-bottom: 20px;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-        }
-        footer {
-            background-color: #5b9bd5;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            margin-top: 40px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>מאגר פעילויות</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+    header {
+      background-color: #4a90e2;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .search-bar {
+      background: #fff;
+      padding: 20px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .search-bar select, .search-bar input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      min-width: 150px;
+    }
+    .activities {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .card.hidden {
+      opacity: 0;
+      transform: scale(0.95);
+      pointer-events: none;
+    }
+    .card h3 {
+      margin-top: 0;
+    }
+    .tags {
+      margin-top: 10px;
+    }
+    .tag {
+      display: inline-block;
+      background-color: #e0e0e0;
+      border-radius: 20px;
+      padding: 5px 10px;
+      font-size: 12px;
+      margin: 2px;
+    }
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      background-color: #4a90e2;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>מדריכה בפעולה</h1>
-        <p>מאגר פעילויות למדריכות חב״ד – לפי גיל, נושא וארגון נוער</p>
-    </header>
-    <main>
-        <section>
-            <h2>ברוכים הבאים!</h2>
-            <p>כאן תמצאו פעילויות מוכנות, חומרים מעוצבים ורעיונות לפי גיל, נושא וארגון נוער. ניתן גם לדרג ולשתף פעילויות בעצמכן.</p>
-        </section>
-        <section>
-            <h2>פעילויות לדוגמה</h2>
-            <ul>
-                <li>אהבת ישראל - פעילות עם משחקים ומשוב</li>
-                <li>שבת - הפעלת שולחנות עיון</li>
-                <li>י״א ניסן - חידון אינטראקטיבי</li>
-            </ul>
-        </section>
-    </main>
-    <footer>
-        &copy; 2025 מדריכה בפעולה | האתר בפיתוח ניסיוני
-    </footer>
+  <header>
+    <h1>מאגר פעילויות</h1>
+    <p>סנן לפי גיל, נושא וארגון</p>
+  </header>
+
+  <div class="search-bar">
+    <label for="ageFilter">לפי גיל:</label>
+    <select id="ageFilter">
+      <option value="">הכל</option>
+      <option value="ילדים">ילדים</option>
+      <option value="נוער">נוער</option>
+      <option value="צעירים">צעירים</option>
+    </select>
+    <label for="topicFilter">לפי נושא:</label>
+    <select id="topicFilter">
+      <option value="">הכל</option>
+      <option value="שבת">שבת</option>
+      <option value="ישראל">אהבת ישראל</option>
+      <option value="חגים">חגים</option>
+    </select>
+    <label for="orgFilter">לפי ארגון:</label>
+    <select id="orgFilter">
+      <option value="">הכל</option>
+      <option value="צבאות השם">צבאות השם</option>
+      <option value="תלמוד תורה">תלמוד תורה</option>
+    </select>
+    <label for="searchInput">חפש פעילות:</label>
+    <input type="text" id="searchInput" placeholder="חפש פעילות..." />
+  </div>
+
+  <div class="activities" id="activitiesContainer">
+    <div class="card" data-age="נוער" data-topic="שבת" data-org="צבאות השם">
+      <h3>הפעלת שולחנות עיון</h3>
+      <p>פעילות מרתקת לשבת עם חידות, דיונים וחומרי רקע.</p>
+      <div class="tags">
+        <span class="tag">שבת</span>
+        <span class="tag">נוער</span>
+        <span class="tag">צבאות השם</span>
+      </div>
+      <a href="activity1.html">לפרטים</a>
+    </div>
+    <div class="card" data-age="ילדים" data-topic="ישראל" data-org="תלמוד תורה">
+      <h3>אהבת ישראל</h3>
+      <p>משחקים ודיונים בנושא ערבות הדדית ואחדות.</p>
+      <div class="tags">
+        <span class="tag">ישראל</span>
+        <span class="tag">ילדים</span>
+        <span class="tag">תלמוד תורה</span>
+      </div>
+      <a href="activity2.html">לפרטים</a>
+    </div>
+  </div>
+
+  <script>
+    const filters = ['age', 'topic', 'org'];
+    filters.forEach(filter => {
+      document.getElementById(`${filter}Filter`).addEventListener('change', filterActivities);
+    });
+    document.getElementById('searchInput').addEventListener('input', filterActivities);
+
+    function filterActivities() {
+      const age = document.getElementById('ageFilter').value.trim().toLowerCase();
+      const topic = document.getElementById('topicFilter').value.trim().toLowerCase();
+      const org = document.getElementById('orgFilter').value.trim().toLowerCase();
+      const search = document.getElementById('searchInput').value.trim().toLowerCase();
+
+      document.querySelectorAll('.card').forEach(card => {
+        const matchAge = !age || card.dataset.age.toLowerCase() === age;
+        const matchTopic = !topic || card.dataset.topic.toLowerCase() === topic;
+        const matchOrg = !org || card.dataset.org.toLowerCase() === org;
+        const matchSearch = card.innerText.toLowerCase().includes(search);
+
+        if (matchAge && matchTopic && matchOrg && matchSearch) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+  </script>
 </body>
 </html>
