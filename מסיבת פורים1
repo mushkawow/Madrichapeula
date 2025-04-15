@@ -40,6 +40,9 @@
       text-decoration: none;
       border-radius: 6px;
     }
+    a.download:hover {
+      background-color: #357ab7;
+    }
     img {
       max-width: 100%;
       border-radius: 10px;
@@ -94,8 +97,11 @@
 
   <section>
     <h2>הורדות</h2>
-    <p>משחקי עזר: "למי הכי מתאים" ו"רשימת ג׳וקים".</p>
-    <a href="files/purim_lists.pdf" class="download" download>הורדת דפי עזר</a>
+    <p>חומרי עזר:</p>
+    <ul>
+      <li><a href="https://docs.google.com/document/d/1P7JJ4KaFOf2M3Ht6OdjM1UvzwFLieU4WYV3VSNSqSXw/edit" class="download" target="_blank">משחק ג'וקים</a></li>
+      <li><a href="https://docs.google.com/document/d/16Gghb-Exg3GD2w8s7PpGBtrcX9NhGR2XQj2x9MJ68Qg/edit" class="download" target="_blank">משחק למי הכי מתאים</a></li>
+    </ul>
   </section>
 </body>
 </html>
