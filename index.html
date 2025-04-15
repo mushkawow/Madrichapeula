@@ -66,11 +66,14 @@
     .card a {
       display: inline-block;
       margin-top: 10px;
-      background-color: #4a90e2;
+      background-color: green;
       color: white;
       padding: 8px 12px;
       border-radius: 5px;
       text-decoration: none;
+    }
+    .card a:hover {
+      background-color: darkgreen;
     }
   </style>
 </head>
@@ -88,27 +91,28 @@
       <option value="כיתה ב">כיתה ב</option>
       <option value="כיתה ג">כיתה ג</option>
       <option value="כיתה ד">כיתה ד</option>
-       <option value="כיתה ה">כיתה ה</option>
-       <option value="כיתה ו">כיתה ו</option>
-       <option value="כיתה ז">כיתה ז</option>
-       <option value="כיתה ח">כיתה ח</option>
-       <option value="כיתה ט">כיתה ט</option>
-       <option value="כיתה י">כיתה י</option>
-       <option value="כיתה י"א">כיתה י"א</option>
-       <option value="כיתה י"ב">כיתה י"ב</option>
+      <option value="כיתה ה">כיתה ה</option>
+      <option value="כיתה ו">כיתה ו</option>
+      <option value="כיתה ז">כיתה ז</option>
+      <option value="כיתה ח">כיתה ח</option>
+      <option value="כיתה ט">כיתה ט</option>
+      <option value="כיתה י">כיתה י</option>
+      <option value="כיתה י"א">כיתה י"א</option>
+      <option value="כיתה י"ב">כיתה י"ב</option>
     </select>
     <label for="topicFilter">לפי נושא:</label>
     <select id="topicFilter">
-      <option value="הכל">הכל</option>
+      <option value="">הכל</option>
       <option value="שבת">שבת</option>
       <option value="אהבת ישראל">אהבת ישראל</option>
-      <option value="רבי">"רבי</option>
-      <option value="צניעות">"צניעות</option>
-      <option value="התקשרות לרבי">"התקשרות לרבי</option>
-      <option value="אמונה">"אמונה</option>
-      <option value="תפילה">"תפילה</option>      
-      <option value="פעילות הכרות">"פעילות הכרות</option>
-      <option value="כל יהודי הוא שליח">"כל יהודי הוא שליח</option>
+      <option value="רבי">רבי</option>
+      <option value="צניעות">צניעות</option>
+      <option value="התקשרות לרבי">התקשרות לרבי</option>
+      <option value="אמונה">אמונה</option>
+      <option value="תפילה">תפילה</option>      
+      <option value="פעילות הכרות">פעילות הכרות</option>
+      <option value="כל יהודי הוא שליח">כל יהודי הוא שליח</option>
+      <option value="מסיבת פורים">מסיבת פורים</option>
     </select>
     <label for="orgFilter">לפי ארגון:</label>
     <select id="orgFilter">
@@ -116,7 +120,7 @@
       <option value="בת מלך">בת מלך</option>
       <option value="צבאות השם">צבאות השם</option>
       <option value="מועדון המעשים הטובים">מועדון המעשים הטובים</option>
-      <option value="חב"ד לנוער - סיטין">חב"ד לנוער - סיטין</option>
+      <option value="חב"ד לנוער">חב"ד לנוער</option>
       <option value="בנות חב"ד">בנות חב"ד</option>
       <option value="אחות התמימים">אחות התמימים</option>
       <option value="פעילות גיבוש">פעילות גיבוש</option>
@@ -147,6 +151,27 @@
       </div>
       <a href="activity2.html">לפרטים</a>
     </div>
+    <div class="card" data-age="כיתה ה, כיתה ו, כיתה ז, כיתה ח, כיתה ט, כיתה י, כיתה י\"א, כיתה י\"ב" data-topic="מסיבת פורים" data-org="בת מלך, צבאות השם, בנות חב\"ד, אחות התמימים, חב\"ד לנוער">
+      <h3>מסיבת פורים1</h3>
+      <p>פעילות מרתקת לכבוד חג הפורים לכל הגילאים והארגונים.</p>
+      <div class="tags">
+        <span class="tag">כיתה ה</span>
+        <span class="tag">כיתה ו</span>
+        <span class="tag">כיתה ז</span>
+        <span class="tag">כיתה ח</span>
+        <span class="tag">כיתה ט</span>
+        <span class="tag">כיתה י</span>
+        <span class="tag">כיתה י"א</span>
+        <span class="tag">כיתה י"ב</span>
+        <span class="tag">מסיבת פורים</span>
+        <span class="tag">בת מלך</span>
+        <span class="tag">צבאות השם</span>
+        <span class="tag">בנות חב"ד</span>
+        <span class="tag">אחות התמימים</span>
+        <span class="tag">חב"ד לנוער</span>
+      </div>
+      <a href="מסיבת_פורים1.html">לפעילות</a>
+    </div>
   </div>
 
   <script>
@@ -163,9 +188,9 @@
       const search = document.getElementById('searchInput').value.trim().toLowerCase();
 
       document.querySelectorAll('.card').forEach(card => {
-        const matchAge = !age || card.dataset.age.toLowerCase() === age;
-        const matchTopic = !topic || card.dataset.topic.toLowerCase() === topic;
-        const matchOrg = !org || card.dataset.org.toLowerCase() === org;
+        const matchAge = !age || card.dataset.age.toLowerCase().includes(age);
+        const matchTopic = !topic || card.dataset.topic.toLowerCase().includes(topic);
+        const matchOrg = !org || card.dataset.org.toLowerCase().includes(org);
         const matchSearch = card.innerText.toLowerCase().includes(search);
 
         if (matchAge && matchTopic && matchOrg && matchSearch) {
