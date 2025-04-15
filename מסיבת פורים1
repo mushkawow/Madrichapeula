@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>פעילות פורימית!</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f9f9f9;
+      direction: rtl;
+    }
+    h1 {
+      color: #4a90e2;
+      margin-bottom: 10px;
+    }
+    .tags {
+      margin-bottom: 20px;
+    }
+    .tag {
+      display: inline-block;
+      background-color: #e0e0e0;
+      padding: 5px 10px;
+      border-radius: 15px;
+      margin-left: 5px;
+      font-size: 13px;
+    }
+    section {
+      margin-bottom: 25px;
+    }
+    ul {
+      line-height: 1.8;
+    }
+    a.download {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 15px;
+      background-color: #4a90e2;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1>פעילות פורימית!</h1>
+  <div class="tags">
+    <span class="tag">כיתה ה׳</span>
+    <span class="tag">כיתה ו׳</span>
+    <span class="tag">כיתה ז׳</span>
+    <span class="tag">כיתה ח׳</span>
+    <span class="tag">כיתה ט׳</span>
+    <span class="tag">כיתה י׳</span>
+    <span class="tag">כיתה י"א</span>
+    <span class="tag">כיתה י"ב</span>
+    <span class="tag">נושא: מסיבת פורים</span>
+    <span class="tag">ארגון: הכל</span>
+  </div>
+
+  <section>
+    <h2>פעילות 1</h2>
+    <ul>
+      <li>כל אחת מקבלת כובע ליצן או מסיכה לבנה.</li>
+      <li>כותבים בפתקים את שמות כל הבנות בפעילות, וכל ילדה מקבלת שם של מישהי אחרת – בלי לגלות.</li>
+      <li>יש חומרי יצירה על השולחן: תלתלים, פונפונים, נצנצים, טושים, פייטים וכו׳.</li>
+      <li>כל אחת מעצבת מסיכה/כובע לפי התכונות של הנערה שקיבלה.</li>
+      <li>מציגים את התוצאה ומסבירים למה עיצבו כך – להקפיד על מחמאות בלבד :)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>פעילות 2</h2>
+    <p>בוחרים 4 בנות. לכל אחת שמים כתר עם מילה שקשורה לפורים (למשל: פורים, שמחה, משלוח מנות וכו׳), אך הן לא יודעות מה כתוב להן.</p>
+    <p>המדריכה מקריאה משפטים "למי הכי מתאים...", והבנות מנסות לנחש לפי התגובות מה המילה על הכתר שלהן.</p>
+  </section>
+
+  <section>
+    <h2>פעילות 3 – מלכת הג׳וקים</h2>
+    <p>כל נערה מקבלת דף מדבקות קטנות או טוש/אודם.</p>
+    <p>המדריכה מקריאה "ג׳וקים" – תכונות או דברים שמפריעים לנו.</p>
+    <p>מי שמזדהה – שמה מדבקה/מציירת נקודה על הפנים.</p>
+    <p>מי שעם הכי הרבה נקודות – "מלכת הג׳וקים" וזוכה בפרס (למשל קופסת מרק 😆).</p>
+  </section>
+
+  <section>
+    <h2>פעילות 4</h2>
+    <p>בהצלחה, תהנו!</p>
+  </section>
+
+  <section>
+    <h2>הורדות</h2>
+    <p>משחקי עזר: "למי הכי מתאים" ו"רשימת ג׳וקים".</p>
+    <a href="files/purim_lists.pdf" class="download" download>הורדת דפי עזר</a>
+  </section>
+</body>
+</html>
